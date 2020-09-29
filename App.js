@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeScreen from '@/pages/HomeScreen';
+import HomeScreen from '@/scenes/Home';
 
 const App = () => (
   <HomeScreen />
