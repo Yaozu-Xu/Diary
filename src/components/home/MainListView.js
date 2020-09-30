@@ -1,5 +1,4 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
 import {
   ListItem, Avatar,
 } from 'react-native-elements';
@@ -9,7 +8,7 @@ const MainListView = (props) => {
   const { toDoList } = props;
   return (
     toDoList.map((item) => (
-      <ScrollView>
+      <>
         <ListItem
           bottomDivider
         >
@@ -29,7 +28,7 @@ const MainListView = (props) => {
           />
         </ListItem>
         <SwipeList taskList={item.taskList} />
-      </ScrollView>
+      </>
     )));
 };
 
