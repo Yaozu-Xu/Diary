@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ListItem, Avatar,
 } from 'react-native-elements';
 import SwipeList from '@/components/home/SwipeList';
 
 const MainListView = (props) => {
+  const [currentPlanIndex, setcurrentPlanIndex] = useState(false);
   const { toDoList } = props;
   return (
-    toDoList.map((item) => (
+    toDoList.map((item, index) => (
       <>
         <ListItem
           bottomDivider
@@ -25,9 +26,12 @@ const MainListView = (props) => {
             size={30}
             name="angle-down"
             type="font-awesome"
+            onPress={() => {
+              setcurrentPlanIndex(index);
+            }}
           />
         </ListItem>
-        <SwipeList taskList={item.taskList} />
+        <SwipeList taskList={item.taskList} toggle={item.toggle} />
       </>
     )));
 };

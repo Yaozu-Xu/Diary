@@ -41,10 +41,12 @@ function renderHiddenItem() {
 }
 
 const SwipperList = (props) => {
-  const { taskList } = props;
+  const { taskList, toggle } = props;
+  const toggleStyle = toggle ? 'flex' : 'none';
   return (
     <SwipeListView
       useFlatList
+      style={{ display: toggleStyle }}
       data={taskList}
       disableRightSwipe
       renderItem={(rowData) => <TaskListView rowData={rowData} />}
