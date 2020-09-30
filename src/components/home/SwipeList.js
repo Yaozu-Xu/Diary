@@ -44,6 +44,7 @@ const SwipperList = (props) => {
   const { taskList } = props;
   return (
     <SwipeListView
+      useFlatList
       data={taskList}
       disableRightSwipe
       renderItem={(rowData) => <TaskListView rowData={rowData} />}
