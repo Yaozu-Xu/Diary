@@ -1,10 +1,10 @@
 import React from 'react';
 import { Header } from 'react-native-elements';
-import variables from '@/assets/style/variables';
+import HeaderBackground from '@/assets/image/headerBackground.jpeg';
 
 const NavHeader = () => (
   <Header
-    backgroundColor={variables.primaryBackground}
+    backgroundImage={HeaderBackground}
     placement="center"
     leftComponent={{ icon: 'menu', color: '#fff' }}
     centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
