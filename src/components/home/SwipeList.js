@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingLeft: 15,
   },
-  backRightBtn: {
+  settingBtn: {
     alignItems: 'center',
     bottom: 0,
     justifyContent: 'center',
@@ -26,27 +26,29 @@ const styles = StyleSheet.create({
     top: 0,
     width: 75,
   },
-  backRightBtnRight: {
-    backgroundColor: 'red',
+  settingBtnFinished: {
+    backgroundColor: '#79f479',
     right: 0,
+  },
+  settingBtnFinishedText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });
 
 function renderHiddenItem() {
   return (
-    <View style={[styles.backRightBtn, styles.backRightBtnRight]}>
-      <Text>Delete</Text>
+    <View style={[styles.settingBtn, styles.settingBtnFinished]}>
+      <Text style={styles.settingBtnFinishedText}>已完成</Text>
     </View>
   );
 }
 
 const SwipperList = (props) => {
-  const { taskList, toggle } = props;
-  const toggleStyle = toggle ? 'flex' : 'none';
+  const { taskList } = props;
   return (
     <SwipeListView
       useFlatList
-      style={{ display: toggleStyle }}
       data={taskList}
       disableRightSwipe
       renderItem={(rowData) => <TaskListView rowData={rowData} />}

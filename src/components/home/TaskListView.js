@@ -2,7 +2,30 @@ import React from 'react';
 import {
   ListItem, Text, Tooltip,
 } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+
+const styles = StyleSheet.create({
+  shadow: {
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+    elevation: 7,
+  },
+  clockIcon: {
+    fontSize: 20,
+  },
+  listText: {
+    paddingLeft: 20,
+    textAlign: 'center',
+  },
+});
 
 const TaskListView = (props) => {
   const { rowData } = props;
@@ -14,10 +37,16 @@ const TaskListView = (props) => {
       toggleAction="onLongPress"
     >
       <ListItem
-        bottomDivider
+        style={styles.shadow}
       >
         <ListItem.Content>
-          <ListItem.Title>{rowData.item.scheduledTime}</ListItem.Title>
+          <ListItem.Title>
+            <Icon name="clock-o" style={styles.clockIcon} />
+            <Text style={styles.listText}>
+              {'   '}
+              {rowData.item.scheduledTime}
+            </Text>
+          </ListItem.Title>
         </ListItem.Content>
         <ListItem.Content>
           <ListItem.Title>{rowData.item.taskName}</ListItem.Title>
