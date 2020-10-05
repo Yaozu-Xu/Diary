@@ -33,6 +33,7 @@
     "@react-native-community/eslint-config": "^1.1.0",
     "@testing-library/jest-native": "^3.4.2",
     "babel-jest": "^25.1.0",
+    "detox": "^17.8.0",
     "eslint": "^7.9.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-import-resolver-babel-module": "^5.1.2",
