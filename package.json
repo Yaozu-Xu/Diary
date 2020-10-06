@@ -1,13 +1,16 @@
 {
   "name": "Diary",
-  "version": "0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "e2e:build:android": "detox build --configuration android.release",
+    "e2e:test:android": "detox test --configuration android.release",
+    "e2e:test:ios": "detox test --configuration ios.release",
+    "lint": "eslint --ext .js --ignore-path .gitignore ."
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
@@ -44,6 +47,7 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "eslint-plugin-react-native": "^3.9.1",
     "jest": "^25.1.0",
+    "jest-circus": "^26.5.1",
     "metro-react-native-babel-preset": "^0.59.0",
     "react-test-renderer": "16.13.1"
   },

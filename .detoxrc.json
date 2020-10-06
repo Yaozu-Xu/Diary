@@ -1,0 +1,19 @@
+{
+  "test-runner": "jest",
+  "configurations": {
+    "ios.release": {
+      "binaryPath": "./ios/build/Build/Products/Release-iphonesimulator/Diary.app",
+      "build": "xcodebuild -workspace ios/Diary.xcworkspace -configuration release -scheme Diary -sdk iphonesimulator -derivedDataPath ios/build",
+      "type": "ios.simulator",
+      "name": "iPhone 11"
+    },
+    "android.release": {
+      "binaryPath": "android/app/build/outputs/apk/release/app-release.apk",
+      "build": "cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd ..",
+      "type": "android.emulator",
+      "device": {
+        "avdName": "Pixel_XL_API_30"
+      }
+    }
+  }
+}
