@@ -33,4 +33,4 @@ const HomeScenes = () => (
   </>
 );
 
-export default (HomeScenes);
+export default HomeScenes;
