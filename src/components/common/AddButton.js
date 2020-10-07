@@ -5,8 +5,8 @@ import backgroundImage from '@/assets/image/greyBackground.jpeg';
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: 36,
-    height: 36,
+    width: 32,
+    height: 32,
     flexDirection: 'column',
     justifyContent: 'center',
   },
