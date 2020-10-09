@@ -25,7 +25,7 @@ const toDoList = [
   },
 ];
 
-const HomeScenes = () => (
+const PlansScreen = () => (
   <>
     <NavHeader />
     <SelectionOverlay />
@@ -33,4 +33,4 @@ const HomeScenes = () => (
   </>
 );
 
-export default HomeScenes;
+export default PlansScreen;

@@ -5,19 +5,9 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+import BaseStyle from '@/assets/style/base';
 
 const styles = StyleSheet.create({
-  shadow: {
-    backgroundColor: '#fff',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
-    elevation: 7,
-  },
   clockIcon: {
     fontSize: 20,
   },
@@ -37,7 +27,7 @@ const TaskListView = (props) => {
       toggleAction="onLongPress"
     >
       <ListItem
-        style={styles.shadow}
+        style={BaseStyle.shadow}
       >
         <ListItem.Content>
           <ListItem.Title>

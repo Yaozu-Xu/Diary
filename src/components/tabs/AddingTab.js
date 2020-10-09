@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const AddButton = () => (
+const AddingTab = () => (
   <ImageBackground source={backgroundImage} style={styles.wrapper}>
     <Icon
       name="plus"
@@ -27,4 +27,4 @@ const AddButton = () => (
   </ImageBackground>
 );
 
-export default AddButton;
+export default AddingTab;

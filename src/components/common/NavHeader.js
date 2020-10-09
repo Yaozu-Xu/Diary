@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header } from 'react-native-elements';
 import HeaderBackground from '@/assets/image/headerBackground.jpeg';
-import AddButton from './AddButton';
+import AddingTab from '@/components/tabs/AddingTab';
 
 const NavHeader = () => (
   <Header
@@ -16,7 +16,7 @@ const NavHeader = () => (
       text: 'Trailing',
       style: { color: '#fff', fontSize: 20, fontWeight: 'bold' },
     }}
-    rightComponent={() => <AddButton />}
+    rightComponent={() => <AddingTab />}
   />
 );
 
