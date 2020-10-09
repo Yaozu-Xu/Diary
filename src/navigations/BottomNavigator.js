@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '@/scenes/Home';
-import DetailScreen from '@/scenes/Detail';
+import PlanScreen from '@/screens/Plans';
+import RecordScreen from '@/screens/Records';
 import HodiernalTab from '@/components/tabs/HodiernalTab';
 import RecordsTab from '@/components/tabs/RecordsTab';
 
@@ -10,13 +10,13 @@ const Tab = createBottomTabNavigator();
 const BottomNavigator = () => (
   <Tab.Navigator>
     <Tab.Screen
-      name="今天"
-      component={HomeScreen}
+      name="Plans"
+      component={PlanScreen}
       options={{ tabBarIcon: () => <HodiernalTab /> }}
     />
     <Tab.Screen
-      name="记录"
-      component={DetailScreen}
+      name="Records"
+      component={RecordScreen}
       options={{ tabBarIcon: () => <RecordsTab /> }}
     />
   </Tab.Navigator>
