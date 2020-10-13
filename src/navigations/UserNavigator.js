@@ -1,13 +1,26 @@
-import * as React from 'react';
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import SignInScreen from '@/screens/SignIn';
+import LoginScreen from '@/screens/User/Login';
+import IndexScreen from '@/screens/User/Index';
+import SignInScreen from '@/screens/User/SignIn';
 
 const Stack = createStackNavigator();
 
-const StackNavigator = () => (
-  <Stack.Navigator headerMode="none">
-    <Stack.Screen name="SignIn" component={SignInScreen} />
+const UserNavigator = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="User"
+      component={IndexScreen}
+    />
+    <Stack.Screen
+      name="SignIn"
+      component={SignInScreen}
+    />
+    <Stack.Screen
+      name="LogIn"
+      component={LoginScreen}
+    />
   </Stack.Navigator>
 );
 
-export default StackNavigator;
+export default UserNavigator;
