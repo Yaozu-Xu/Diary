@@ -17,7 +17,7 @@ LocaleConfig.defaultLocale = 'ir';
 
 const styles = StyleSheet.create({
   calendar: {
-    marginTop: 200,
+    marginTop: 150,
     height: 350,
   },
 });
