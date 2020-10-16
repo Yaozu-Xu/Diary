@@ -1,11 +1,12 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {
   ListItem, Text, Tooltip,
 } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { StyleSheet } from 'react-native';
-import PropTypes from 'prop-types';
 import BaseStyle from '@/assets/style/base';
+import { getCurrentHour } from '@/utils/timer';
 
 const styles = StyleSheet.create({
   clockIcon: {
@@ -18,7 +19,14 @@ const styles = StyleSheet.create({
 });
 
 const TaskListView = (props) => {
-  const { rowData } = props;
+  const { details } = props;
+  function renderDateTime(date) {
+    if (date) {
+      const { minutes, hours } = getCurrentHour(date.toDate());
+      return `${hours}:${minutes}`;
+    }
+    return '';
+  }
   return (
     <Tooltip
       popover={<Text>设置提醒</Text>}
@@ -34,12 +42,12 @@ const TaskListView = (props) => {
             <Icon name="clock-o" style={styles.clockIcon} />
             <Text style={styles.listText}>
               {'   '}
-              {rowData.item.scheduledTime}
+              {renderDateTime(details.date)}
             </Text>
           </ListItem.Title>
         </ListItem.Content>
         <ListItem.Content>
-          <ListItem.Title>{rowData.item.taskName}</ListItem.Title>
+          <ListItem.Title>{details.name}</ListItem.Title>
         </ListItem.Content>
         <ListItem.Chevron
           name="bell"
@@ -49,17 +57,6 @@ const TaskListView = (props) => {
       </ListItem>
     </Tooltip>
   );
-};
-
-TaskListView.propTypes = {
-  // eslint-disable-next-line react/require-default-props
-  rowData: PropTypes.shape({
-    item: PropTypes.shape({
-      taskName: PropTypes.string,
-      status: PropTypes.bool,
-      scheduledTime: PropTypes.string,
-    }),
-  }),
 };
 
 export default TaskListView;
