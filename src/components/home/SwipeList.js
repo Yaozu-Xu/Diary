@@ -1,8 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   StyleSheet, Text, View,
 } from 'react-native';
-import PropTypes from 'prop-types';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import TaskListView from './TaskListView';
 
@@ -44,28 +44,19 @@ function renderHiddenItem() {
   );
 }
 
-const SwipperList = (props) => {
-  const { taskList } = props;
+const SwipperList = () => {
+  const taskList = useSelector((state) => state.task.details);
   return (
     <SwipeListView
+      keyExtractor={(item, index) => index.toString()}
       useFlatList
       data={taskList}
       disableRightSwipe
-      renderItem={(rowData) => <TaskListView rowData={rowData} />}
+      renderItem={(rowData) => <TaskListView details={rowData.item} />}
       renderHiddenItem={renderHiddenItem}
       leftOpenValue={75}
       rightOpenValue={-75}
     />
   );
 };
-
-SwipperList.propTypes = {
-  // eslint-disable-next-line react/require-default-props
-  taskList: PropTypes.arrayOf(PropTypes.shape({
-    taskName: PropTypes.string,
-    status: PropTypes.bool,
-    scheduledTime: PropTypes.string,
-  })),
-};
-
 export default SwipperList;
