@@ -5,7 +5,6 @@ import {
   ListItem, Avatar,
 } from 'react-native-elements';
 import PropTypes from 'prop-types';
-import SwipeList from '@/components/home/SwipeList';
 import { getTimeStamp, isToday } from '@/utils/timer';
 
 const styles = StyleSheet.create({
