@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import NavHeader from '@/components/common/NavHeader';
-import MainListView from '@/components/home/MainListView';
-import SwipeList from '@/components/home/SwipeList';
-import SelectionOverlay from '@/components/home/SelectionOverlay';
+import NavHeader from '@/components/headers/NavHeader';
+import MainListView from '@/components/ListViews/MainListView';
+import SwipeList from '@/components/ListViews/SwipeList';
+import SelectionOverlay from '@/components/Overlays/SelectionOverlay';
 import plansCollection from '@/requester/Plans';
 
 const PlansScreen = () => {
