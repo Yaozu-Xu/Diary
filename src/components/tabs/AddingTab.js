@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, ImageBackground } from 'react-native';
+import { useDispatch } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import backgroundImage from '@/assets/image/greyBackground.jpeg';
 
@@ -17,14 +18,18 @@ const styles = StyleSheet.create({
   },
 });
 
-const AddingTab = () => (
-  <ImageBackground source={backgroundImage} style={styles.wrapper}>
-    <Icon
-      name="plus"
-      style={styles.plusIcon}
-      backgroundColor="#fff"
-    />
-  </ImageBackground>
-);
+const AddingTab = () => {
+  const dispatch = useDispatch();
+  return (
+    <ImageBackground source={backgroundImage} style={styles.wrapper}>
+      <Icon
+        name="plus"
+        style={styles.plusIcon}
+        backgroundColor="#fff"
+        onPress={() => dispatch({ type: 'PLAN_TOOGLE' })}
+      />
+    </ImageBackground>
+  );
+};
 
 export default AddingTab;
