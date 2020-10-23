@@ -13,7 +13,7 @@ const Initialization = () => {
   useEffect(() => {
     const subscriber = plansCollection.plansDocumentSnapshot(uid, setPlanInStore);
     return subscriber;
-  }, [uid]);
+  }, []);
   return (
     <></>
   );
