@@ -13,8 +13,7 @@ const PlansScreen = ({ route }) => {
   // date: '2020-8-13 format
   const { date } = route.params;
   const dispatch = useDispatch();
-  // const pid = generatePid(date);
-  const pid = 'wj1gooYRtymWkb65NFP7';
+  const pid = generatePid(date);
   const uid = '46JDW7egRJOUycYK5HYpfvCdy3j2';
 
   function setTasksInStore(documentSnapshot) {
@@ -26,15 +25,12 @@ const PlansScreen = ({ route }) => {
     }
   }
 
-  useEffect(() => {
-    const subscriber = plansCollection.tasksDocumentSnapshot(uid, pid, setTasksInStore);
-    return subscriber;
-  }, [uid]);
+  useEffect(() => plansCollection.tasksDocumentSnapshot(uid, pid, setTasksInStore), []);
   return (
     <>
       <NavHeader />
       <SelectionOverlay />
-      <NewPlanOverlay />
+      <NewPlanOverlay details={{ date, pid }} />
       <PlansHeader date={date} />
       <SwipeList />
     </>
