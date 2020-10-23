@@ -28,34 +28,37 @@ const TaskListView = (props) => {
     return '';
   }
   return (
-    <Tooltip
-      popover={<Text>设置提醒</Text>}
-      withOverlay={false}
-      width={80}
-      toggleAction="onLongPress"
-    >
-      <ListItem
-        style={BaseStyle.shadow}
-      >
-        <ListItem.Content>
-          <ListItem.Title>
-            <Icon name="clock-o" style={styles.clockIcon} />
-            <Text style={styles.listText}>
-              {'   '}
-              {renderDateTime(details.date)}
-            </Text>
-          </ListItem.Title>
-        </ListItem.Content>
-        <ListItem.Content>
-          <ListItem.Title>{details.name}</ListItem.Title>
-        </ListItem.Content>
-        <ListItem.Chevron
-          name="bell"
-          color="#f884a7"
-          type="font-awesome"
-        />
-      </ListItem>
-    </Tooltip>
+    details.date
+      ? (
+        <Tooltip
+          popover={<Text>设置提醒</Text>}
+          withOverlay={false}
+          width={80}
+          toggleAction="onLongPress"
+        >
+          <ListItem
+            style={BaseStyle.shadow}
+          >
+            <ListItem.Content>
+              <ListItem.Title>
+                <Icon name="clock-o" style={styles.clockIcon} />
+                <Text style={styles.listText}>
+                  {'   '}
+                  {renderDateTime(details.date)}
+                </Text>
+              </ListItem.Title>
+            </ListItem.Content>
+            <ListItem.Content>
+              <ListItem.Title>{details.name}</ListItem.Title>
+            </ListItem.Content>
+            <ListItem.Chevron
+              name="bell"
+              color="#f884a7"
+              type="font-awesome"
+            />
+          </ListItem>
+        </Tooltip>
+      ) : (<></>)
   );
 };
 
