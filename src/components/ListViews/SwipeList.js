@@ -45,7 +45,9 @@ function renderHiddenItem() {
 }
 
 const SwipperList = () => {
-  const taskList = useSelector((state) => state.task.details);
+  const taskList = useSelector((state) => state.task.details).sort(
+    (a, b) => a.date.toDate() < b.date.toDate(),
+  );
   return (
     <SwipeListView
       keyExtractor={(item, index) => index.toString()}
