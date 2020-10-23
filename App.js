@@ -12,7 +12,7 @@ const store = createStore(reducers);
 
 const App = () => (
   <Provider store={store}>
-    <Auth />
+    {/* <Auth /> */}
     <Initialization />
     <NavigationContainer ref={navigationRef}>
       <BottomNavigator />
