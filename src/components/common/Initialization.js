@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import plansCollection from '@/requester/Plans';
 
 const Initialization = () => {
   const dispatch = useDispatch();
-  const uid = '46JDW7egRJOUycYK5HYpfvCdy3j2';
+  const uid = useSelector((state) => state.user.uid);
 
   function setPlanInStore(documentSnapshot) {
     const payload = documentSnapshot.data();
@@ -12,8 +12,8 @@ const Initialization = () => {
   }
   useEffect(() => {
     const subscriber = plansCollection.plansDocumentSnapshot(uid, setPlanInStore);
-    return subscriber;
-  }, [uid]);
+    return () => subscriber;
+  }, []);
   return (
     <></>
   );
