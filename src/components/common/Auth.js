@@ -7,21 +7,23 @@ const Auth = () => {
   const [initializing, setInitializing] = useState(true);
 
   function onAuthStateChanged(res) {
-    const {
-      displayName, uid, email, photoURL,
-    // eslint-disable-next-line no-underscore-dangle
-    } = res._user;
-    dispatch({
-      type: 'SET_USER',
-      payload: {
+    if (res) {
+      const {
         displayName, uid, email, photoURL,
-      },
-    });
+      // eslint-disable-next-line no-underscore-dangle
+      } = res._user;
+      dispatch({
+        type: 'SET_USER',
+        payload: {
+          displayName, uid, email, photoURL,
+        },
+      });
+    }
     if (initializing) setInitializing(false);
   }
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber;
+    return () => subscriber;
   }, []);
 
   return (
