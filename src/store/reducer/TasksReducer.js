@@ -1,5 +1,5 @@
 const STATE = {
-  pid: '',
+  pid: null,
   details: [
     {
       alarm: false,
@@ -13,8 +13,7 @@ const STATE = {
 const TasksReducer = (state = STATE, action) => {
   switch (action.type) {
     case 'SET_TASKS': {
-      const newState = { ...action.payload };
-      return newState;
+      return { ...state, ...action.payload };
     }
     default:
       return state;
