@@ -34,8 +34,8 @@ const SignInScreen = () => {
 
   async function onSignInPressed() {
     try {
-      const res = await auth().createUserWithEmailAndPassword(email, password);
-      console.log(res);
+      await auth().createUserWithEmailAndPassword(email, password);
+      alert('sign in successfully');
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
         alert('That email address is already in use!');
@@ -54,7 +54,6 @@ const SignInScreen = () => {
         placeholder="Email"
         leftIcon={{ type: 'font-awesome', name: 'envelope', size: 18 }}
         onChangeText={(v) => onChangeEmail(v)}
-        errorMessage="ENTER A VALID ERROR HERE"
       />
       <Input
         inputContainerStyle={styles.inputBorder}
