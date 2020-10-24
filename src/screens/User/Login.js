@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { View, StyleSheet, Text } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import auth from '@react-native-firebase/auth';
-import * as RootNavigation from '@/navigations/RootNavigator';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   button: {
-    marginTop: 10,
+    marginTop: 20,
     marginLeft: 10,
     marginRight: 10,
   },
@@ -29,20 +30,27 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [userEmail, onChangeEmail] = useState('');
   const [password, onChangePassword] = useState('');
+  const uid = useSelector((state) => state.user.uid);
 
   async function onLoginPressed() {
     try {
       await auth().signInWithEmailAndPassword(userEmail, password);
+      navigation.navigate('Index', { screen: 'Plans' });
     } catch (error) {
-      console.log(error);
       if (error.code === 'auth/wrong-password') {
         alert('Wrong password !!');
       }
     }
   }
+
+  useEffect(() => {
+    if (uid) {
+      navigation.navigate('Index', { screen: 'Plans' });
+    }
+  }, [uid]);
 
   return (
     <View style={styles.container}>
@@ -63,7 +71,7 @@ const LoginScreen = () => {
       <Button
         title="Create an account here"
         type="clear"
-        onPress={() => RootNavigation.navigate('SignIn')}
+        onPress={() => navigation.navigate('SignIn')}
       />
       <Button
         title="Login"
