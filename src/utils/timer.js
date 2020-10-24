@@ -1,3 +1,5 @@
+import md5 from 'md5';
+
 /**
  *
  * @param {*} seconds current seconds
@@ -24,4 +26,9 @@ export const getCurrentHour = (date) => {
   const minutes = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
   const hours = date.getHours();
   return { minutes, hours };
+};
+
+export const generatePid = (msg) => {
+  const salt = 'asdaklsdasdjk';
+  return md5(msg + salt).substring(4);
 };
