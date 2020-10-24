@@ -1,7 +1,7 @@
-/* eslint-disable react/jsx-curly-brace-presence */
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
+import PropTypes from 'prop-types';
 import Theme from '@/assets/style/variables';
 import BaseStyle from '@/assets/style/base';
 import * as RootNavigation from '@/navigations/RootNavigator';
@@ -28,7 +28,7 @@ const MyCalendar = (props) => {
     <Calendar
       style={[styles.calendar, BaseStyle.shadow]}
       onDayPress={(calendar) => {
-        RootNavigation.navigate('Plans');
+        RootNavigation.navigate('Plans', { date: calendar.dateString });
       }}
       maxDate={settings.maxDate}
       theme={{
@@ -56,6 +56,18 @@ const MyCalendar = (props) => {
       }}
     />
   );
+};
+
+MyCalendar.propTypes = {
+  settings: PropTypes.shape({
+    maxDate: PropTypes.string,
+  }),
+};
+
+MyCalendar.defaultProps = {
+  settings: PropTypes.shape({
+    maxDate: '',
+  }),
 };
 
 export default MyCalendar;
