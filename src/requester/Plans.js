@@ -58,13 +58,11 @@ class PlansCollection {
       });
   }
 
-  tasksDocumentRemover(uid, pid, data, callback) {
+  taskFinished(uid, pid, data, callback) {
     this.plansCollection.doc(uid)
-      .collection('Tasks').doc(pid).update(
+      .collection('Tasks').doc(pid).set(
         {
-          details: firestore.FieldValue.arrayRemove(
-            data,
-          ),
+          details: data,
         },
       )
       .then(() => {
