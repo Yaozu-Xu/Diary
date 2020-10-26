@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import NavHeader from '@/components/headers/NavHeader';
@@ -13,6 +13,7 @@ import { generatePid } from '@/utils/timer';
 const PlansScreen = ({ route, navigation }) => {
   // date: '2020-8-13 format
   const { date } = route.params;
+  const [taskLoading, setTaskLoading] = useState(false);
   const dispatch = useDispatch();
   const pid = generatePid(date);
   const uid = useSelector((state) => state.user.uid);
@@ -22,6 +23,7 @@ const PlansScreen = ({ route, navigation }) => {
     // 今天有计划
     if (taskRes) {
       taskRes.pid = pid;
+      setTaskLoading(true);
       dispatch({ type: 'SET_TASKS', payload: taskRes });
     } else {
       dispatch({
@@ -55,7 +57,7 @@ const PlansScreen = ({ route, navigation }) => {
       <SelectionOverlay />
       <NewPlanOverlay details={{ date, pid }} />
       <PlansHeader date={date} />
-      <SwipeListView info={{ uid, pid }} />
+      {taskLoading && <SwipeListView info={{ uid, pid }} />}
     </>
   );
 };
