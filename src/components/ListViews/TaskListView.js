@@ -53,7 +53,7 @@ const TaskListView = (props) => {
             </ListItem.Content>
             <ListItem.Chevron
               name="bell"
-              color="#f884a7"
+              color={details.alram ? '#f884a7' : '#d5d1d3'}
               type="font-awesome"
             />
           </ListItem>

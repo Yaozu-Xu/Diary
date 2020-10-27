@@ -12,14 +12,6 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
   },
-  rowBack: {
-    alignItems: 'center',
-    backgroundColor: 'green',
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingLeft: 15,
-  },
   settingBtn: {
     alignItems: 'center',
     bottom: 0,
@@ -41,23 +33,29 @@ const styles = StyleSheet.create({
 const SwipperListView = (props) => {
   const { info } = props;
   const { uid, pid } = info;
-  const taskList = useSelector((state) => state.task.details).sort(
+  const currentSelection = useSelector((state) => state.display.currentSelection);
+  let taskList = useSelector((state) => state.task.details).sort(
     (a, b) => a.date.toDate() < b.date.toDate(),
   );
 
-  function onFinishPressed(task) {
-    planCollection.tasksDocumentRemover(uid, pid, task, () => {
-      alert('remove success');
+  if (currentSelection === 1) {
+    taskList = taskList.filter((task) => !task.status);
+  } else if (currentSelection === 2) {
+    taskList = taskList.filter(((task) => task.status));
+  }
+  function onFinishPressed(index) {
+    taskList[index].status = true;
+    planCollection.taskFinished(uid, pid, taskList, () => {
+      alert('已完成!');
     });
   }
 
-  function renderHiddenItem(rowData) {
-    const task = rowData.item;
+  function renderHiddenItem(index) {
     return (
       <View style={[styles.settingBtn, styles.settingBtnFinished]}>
         <Text
           style={styles.settingBtnFinishedText}
-          onPress={() => { onFinishPressed(task); }}
+          onPress={() => { onFinishPressed(index); }}
         >
           已完成
         </Text>
@@ -71,7 +69,7 @@ const SwipperListView = (props) => {
       data={taskList}
       disableRightSwipe
       renderItem={(rowData) => <TaskListView details={rowData.item} />}
-      renderHiddenItem={(rowData) => renderHiddenItem(rowData)}
+      renderHiddenItem={(rowData) => renderHiddenItem(rowData.index)}
       leftOpenValue={75}
       rightOpenValue={-75}
     />
