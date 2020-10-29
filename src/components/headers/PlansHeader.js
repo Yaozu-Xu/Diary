@@ -39,9 +39,7 @@ const PlansHeader = (props) => {
   const { date } = props;
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.task.details).filter((task) => task.date !== null);
-  const user = {
-    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-  };
+  const avatarUrl = useSelector((state) => state.user.photoURL);
 
   function genDateTitle() {
     const currentTime = getTimeStamp();
@@ -57,7 +55,7 @@ const PlansHeader = (props) => {
       <Avatar
         containerStyle={styles.avatar}
         rounded
-        source={{ uri: user.avatar_url }}
+        source={{ uri: avatarUrl }}
         size="medium"
       />
       <View style={styles.titleContainer}>
